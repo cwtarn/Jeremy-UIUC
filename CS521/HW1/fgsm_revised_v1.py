@@ -1,12 +1,19 @@
+# a textbook implementation of a targeted Fast Gradient Sign Method (FGSM) adversarial attack in PyTorch 
+# under an $L_\infty$ perturbation budget
 import torch
 import torch.nn as nn
 
 
+# Model Setup:
 # fix seed so that random initialization always performs the same 
-torch.manual_seed(13)
+# A fixed random seed (13) ensures the randomly initialized weights and input yield deterministic behavior.
 
+torch.manual_seed(13) 
 
 # create the model N as described in the question
+# It builds a small 3-layer MLP (N): 
+# input dimension 10, hidden dimension 10, output dimension 3, using ReLU activations and no bias terms.
+
 N = nn.Sequential(nn.Linear(10, 10, bias=False),
                   nn.ReLU(),
                   nn.Linear(10, 10, bias=False),
@@ -14,7 +21,11 @@ N = nn.Sequential(nn.Linear(10, 10, bias=False),
                   nn.Linear(10, 3, bias=False))
 
 # random input
+
 x = torch.rand((1,10)) # the first dimension is the batch size; the following dimensions the actual dimension of the data
+
+# It draws a random input vector x of shape (1, 10) and tracks its gradient with x.requires_grad_()
+
 x.requires_grad_() # this is required so we can compute the gradient w.r.t x
 
 t = 0 # target class
