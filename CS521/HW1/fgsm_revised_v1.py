@@ -1,4 +1,4 @@
-Jeremy Tarn CS521 HW1 Problem 1
+# Jeremy Tarn CS521 HW1 Problem 1
 
 import torch
 import torch.nn as nn
