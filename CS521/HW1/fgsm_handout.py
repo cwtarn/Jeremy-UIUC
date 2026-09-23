@@ -20,7 +20,7 @@ x.requires_grad_() # this is required so we can compute the gradient w.r.t x
 t = 0 # target class
 
 epsReal = 0.5  #depending on your data this might be large or small
-eps = epsReal - 1e-7 # small constant to offset floating-point erros
+eps = epsReal - 1e-7 # small constant to offset floating-point errors
 
 # The network N classfies x as belonging to class 2
 original_class = N(x).argmax(dim=1).item()  # TO LEARN: make sure you understand this expression
